@@ -1,6 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { SinglePostType } from "../PostList";
+export const dynamicParams = true;
 const fetchSinglePost = async (id: string) => {
   if (+id > 0 && id) {
     const res = await fetch(
