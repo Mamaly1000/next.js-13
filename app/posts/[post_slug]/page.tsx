@@ -1,8 +1,25 @@
 import React from "react";
-import { fetchSinglePost } from "@/common/posts/FetchSinglePost";
 import { notFound } from "next/navigation";
 import { SinglePostType } from "../PostList";
-
+const fetchSinglePost = async (id: string) => {
+  if (+id > 0 && id) {
+    const res = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${id}`,
+      { cache: "force-cache" }
+    );
+    const postData: SinglePostType = await res.json();
+    const status = res.status;
+    return {
+      postData,
+      status,
+    };
+  } else {
+    return {
+      postData: null,
+      status: 500,
+    };
+  }
+};
 const SinglePost = async ({ params }: { params: any }) => {
   const { postData } = await fetchSinglePost(params.post_slug);
   if (!postData?.id) notFound();
@@ -22,7 +39,7 @@ export async function generateStaticParams() {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts: SinglePostType[] = await res.json();
 
-  return posts.slice(0, 10).map((post) => ({
-    slug: String(post.id),
+  return posts.slice(0, 3).map((post) => ({
+    post_slug: String(post.id),
   }));
 }
