@@ -1,6 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { SinglePostType } from "../PostList";
+import ClientComponent from "./ClientComponent";
 export const dynamicParams = true;
 const fetchSinglePost = async (id: string) => {
   if (+id > 0 && id) {
@@ -30,6 +31,7 @@ const SinglePost = async ({ params }: { params: any }) => {
       <p>{postData!.body}</p>
       <p>user id: {postData!.userId}</p>
       <p>post id: {postData!.id}</p>
+      <ClientComponent />
     </div>
   );
 };

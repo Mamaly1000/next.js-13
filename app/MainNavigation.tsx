@@ -11,6 +11,9 @@ const MainNavigation = () => {
             </li>
             <li>
               <Link href={"/posts"}>posts</Link>
+            </li>{" "}
+            <li>
+              <Link href={"/mainposts"}>main posts</Link>
             </li>
           </ul>
         </nav>

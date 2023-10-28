@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import errorGif from "./../../../assets/icons8-error.gif";
-import { ErrorProps } from "next/error";
+import errorGif from "./../../../../assets/icons8-error.gif";
 const Error = ({ error }: { error: { message: string } }) => {
   return (
     <div className="min-w-full min-h-screen relative flex flex-col items-center justify-center gap-3">

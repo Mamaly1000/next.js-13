@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import PostList from "./PostList";
+import PostList from "./mainposts/PostList";
 
 const layout = ({ children }: { children: ReactNode }) => {
   return (
