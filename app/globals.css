@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+.skeleton-loading {
+  overflow: hidden;
+  position: relative; 
+  background: linear-gradient(
+      to right,
+      rgb(143, 142, 141) 0%,
+      rgb(237, 235, 233) 50%,
+      rgb(143, 142, 141) 100%
+    )
+    0px 0px / 100% 100% rgb(243, 242, 241); 
+  animation: linearAnim 2s infinite linear alternate;
+}
+@keyframes linearAnim {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 230px 0px;
+  }
+}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

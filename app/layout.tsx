@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import { Duru_Sans } from "next/font/google";
 import "./globals.css";
 import MainNavigation from "./MainNavigation";
-
-const inter = Duru_Sans({
-  subsets: ["latin"],
-  weight: "400",
-});
+import Playpen from "@/common/play/playpen";
 
 export const metadata: Metadata = {
   title: "lets conquer the world",
@@ -20,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html dir="ltr" lang="en">
-      <body className={inter.className}>
+      <body className={Playpen.className}>
         <MainNavigation />
         {children}
       </body>

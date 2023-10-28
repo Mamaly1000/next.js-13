@@ -46,3 +46,11 @@ export async function generateStaticParams() {
     post_slug: String(post.id),
   }));
 }
+export async function generateMetadata({ params }: { params: any }) {
+  const { postData } = await fetchSinglePost(params.post_slug);
+  if (!postData?.id) notFound();
+  return {
+    title: postData.title,
+    description: postData.body,
+  };
+}

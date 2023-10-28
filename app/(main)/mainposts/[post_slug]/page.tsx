@@ -2,6 +2,7 @@ import React from "react";
 import { notFound } from "next/navigation";
 import { SinglePostType } from "../PostList";
 import ClientComponent from "./ClientComponent";
+import { Metadata } from "next";
 export const dynamicParams = true;
 const fetchSinglePost = async (id: string) => {
   if (+id > 0 && id) {
@@ -45,4 +46,12 @@ export async function generateStaticParams() {
   return posts.slice(0, 3).map((post) => ({
     post_slug: String(post.id),
   }));
+}
+export async function generateMetadata({ params }: { params: any }) {
+  const { postData } = await fetchSinglePost(params.post_slug);
+  if (!postData?.id) notFound();
+  return {
+    title: postData.title,
+    description: postData.body,
+  };
 }
